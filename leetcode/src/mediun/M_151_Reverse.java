@@ -1,4 +1,4 @@
-package easy;
+package mediun;
 
 import java.util.Stack;
 
@@ -12,7 +12,7 @@ import java.util.Stack;
 * 分析：双重for循环，O(n2)的时间复杂度不可取。
 *       输入和输出拥有栈的数据结构特征。所以考虑到用栈。
 * */
-public class E_151_Reverse {
+public class M_151_Reverse {
     public static void main(String[] args) {
         String ss = "the sky    is blue";
         System.out.println(reverseWord(ss));
