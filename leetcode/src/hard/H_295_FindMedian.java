@@ -1,5 +1,6 @@
 package hard;
 
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 /*
@@ -20,12 +21,21 @@ public class H_295_FindMedian {
 
     public static void main(String[] args) {
         H_295_FindMedian h = new H_295_FindMedian();
+        h.addNum(1);
         h.addNum(2);
-        h.addNum(3);
-        h.addNum(4);
+        h.addNum(10);
+        h.addNum(20);
+        h.addNum(22);
+        h.addNum(40);
+//        添加终止插入
+        h.addNum(-1);
     }
 
     private void addNum(Integer num) {
+//        判断终止插入位置
+        if(-1 == num){
+            System.out.println(H_295_FindMedian.findMedian());
+        }
         if (count%2 == 0) {
             minHeap.offer(num);
             maxHeap.offer(minHeap.poll());
@@ -34,12 +44,13 @@ public class H_295_FindMedian {
             minHeap.offer(maxHeap.poll());
         }
         count++;
-        System.out.println(H_295_FindMedian.findMedian());
     }
 
     private static double findMedian() {
-
-        return maxHeap.peek();
+        if(maxHeap.size() > minHeap.size()){
+            return maxHeap.peek();
+        } else {
+            return (maxHeap.peek() + minHeap.peek())/2.0;
+        }
     }
-
 }
